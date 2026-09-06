@@ -2,8 +2,8 @@
 // 身份条取 /api/site；版本号静态维护(发版时手改)
 import { getSite } from '~/api/blog';
 
-const VERSION = '0.1.1';
-const CHANGELOG = '电子名片 · 文章流 · 访客留言 · 往期归档';
+const VERSION = '0.2.0';
+const CHANGELOG = '我的页内容中心(归档/标签/关于) · 电子名片 · 访客留言';
 
 Page({
   data: {
