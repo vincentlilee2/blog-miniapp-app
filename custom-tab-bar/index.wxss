@@ -1,0 +1,26 @@
+/* 自定义 tabBar 容器：吸底 + iPhone 安全区（浅色默认，深色随名片页切换） */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: #fff;
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+/*
+ * 深色主题（电子名片页）：TDesign tab-bar 颜色全走 CSS 变量，
+ * 组件 styleIsolation=apply-shared，变量沿 DOM 继承生效。
+ * 名片页底色 #0e2233 → 同色 tabBar 融合，金色激活点缀。
+ */
+.tab-bar--dark {
+  --td-tab-bar-bg-color: #0e2233;
+  --td-tab-bar-color: rgba(255, 255, 255, 0.55);
+  --td-tab-bar-active-color: #d4af37;
+  --td-tab-bar-active-bg: rgba(255, 255, 255, 0.1);
+  --td-tab-bar-border-color: rgba(255, 255, 255, 0.08);
+  background: #0e2233;
+  box-shadow: 0 -2rpx 16rpx rgba(0, 0, 0, 0.35);
+}

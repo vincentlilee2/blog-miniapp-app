@@ -1,0 +1,117 @@
+<view class="card-page">
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="state-wrap">
+    <t-loading theme="spinner" size="60rpx" text="加载中..." />
+  </view>
+
+  <!-- 错误 -->
+  <view wx:elif="{{error}}" class="state-wrap">
+    <view class="state-tip">{{error}}</view>
+    <t-button theme="primary" size="medium" bindtap="onRetry">重试</t-button>
+  </view>
+
+  <block wx:elif="{{card.name || card.brand}}">
+    <!-- 品牌字标 -->
+    <view class="brand">
+      <text class="brand-dot"></text>
+      <text class="brand-text">{{card.brand}}</text>
+      <text class="brand-dot"></text>
+    </view>
+
+    <!-- 首屏：头像(左) + 名字/角色/标语(右) -->
+    <view class="hero">
+      <view class="avatar-wrap">
+        <image wx:if="{{card.avatar}}" class="avatar" src="{{card.avatar}}" mode="aspectFill" />
+        <view wx:else class="avatar avatar--empty">
+          <t-icon name="user" size="48rpx" color="#ffffffcc" />
+        </view>
+      </view>
+      <view class="hero-text">
+        <view class="hero-name">{{card.name}}</view>
+        <view wx:if="{{card.role}}" class="hero-role">{{card.role}}</view>
+        <view wx:if="{{card.sub}}" class="hero-sub">{{card.sub}}</view>
+      </view>
+    </view>
+
+    <!-- 作品 -->
+    <block wx:if="{{card.projects.length}}">
+      <view class="divider"><text class="divider-line"></text>作品 WORKS & 项目 PROJECTS<text class="divider-line"></text></view>
+      <view class="projects">
+        <view
+          wx:for="{{card.projects}}"
+          wx:key="name"
+          class="proj"
+          data-url="{{item.url}}"
+          data-name="{{item.name}}"
+          bindtap="onProjectTap"
+        >
+          <view class="proj-name">
+            <text class="proj-name-text">{{item.name}}</text>
+            <text class="proj-badge">自研</text>
+          </view>
+          <view wx:if="{{item.desc}}" class="proj-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 找到我 -->
+    <block wx:if="{{card.socials.length}}">
+      <view class="divider"><text class="divider-line"></text>找到我 FIND ME<text class="divider-line"></text></view>
+      <view class="socials">
+        <view
+          wx:for="{{card.socials}}"
+          wx:key="key"
+          class="soc {{item.key === 'guestbook' ? 'soc--cta' : ''}}"
+          data-url="{{item.url}}"
+          data-label="{{item.label}}"
+          data-key="{{item.key}}"
+          bindtap="onSocialTap"
+        >{{item.label}}</view>
+      </view>
+    </block>
+
+    <!-- 添加微信 -->
+    <view class="divider"><text class="divider-line"></text>添加微信 WECHAT<text class="divider-line"></text></view>
+    <view class="wechat">
+      <view class="wechat-hint">扫码添加好友，或直接搜索微信号</view>
+      <view class="qr-row">
+        <view class="qr-cell">
+          <view class="qr-box">
+            <image
+              wx:if="{{card.wechatQr}}"
+              class="qr-img"
+              src="{{card.wechatQr}}"
+              mode="aspectFit"
+              show-menu-by-longpress
+              data-src="{{card.wechatQr}}"
+              bindtap="onQrPreview"
+            />
+            <view wx:else class="qr-empty">个人微信二维码<br />后台「名片」页添加</view>
+          </view>
+          <view class="qr-cap">个人微信</view>
+        </view>
+        <view class="qr-cell">
+          <view class="qr-box">
+            <image
+              wx:if="{{card.officialQr}}"
+              class="qr-img"
+              src="{{card.officialQr}}"
+              mode="aspectFit"
+              show-menu-by-longpress
+              data-src="{{card.officialQr}}"
+              bindtap="onQrPreview"
+            />
+            <view wx:else class="qr-empty">公众号二维码<br />后台「名片」页添加</view>
+          </view>
+          <view class="qr-cap">微信公众号</view>
+        </view>
+      </view>
+      <view wx:if="{{card.wechatId}}" class="wechat-id" bindtap="onCopyWechat">
+        <text>{{card.wechatId}}</text>
+        <text class="wechat-copy">复制</text>
+      </view>
+    </view>
+
+    <view class="card-foot">MemoryGarden © 2026 · 记忆花园</view>
+  </block>
+</view>

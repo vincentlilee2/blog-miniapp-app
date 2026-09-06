@@ -1,0 +1,30 @@
+<view class="post-card {{post.cover ? 'post-card--cover' : ''}}" hover-class="post-card--hover" bindtap="onTap">
+  <image
+    wx:if="{{post.cover}}"
+    class="post-card__cover"
+    src="{{post.cover}}"
+    mode="aspectFill"
+    lazy-load
+    style="{{post.coverPosition ? 'object-position: ' + post.coverPosition : ''}}"
+  />
+  <view class="post-card__body">
+    <view class="post-card__title">{{post.title}}</view>
+    <view wx:if="{{post.description}}" class="post-card__desc">{{post.description}}</view>
+    <view class="post-card__footer">
+      <view class="post-card__meta">
+        <text wx:if="{{dateText}}" class="post-card__date">{{dateText}}</text>
+        <view class="post-card__tags">
+          <text
+            wx:for="{{post.tags}}"
+            wx:key="*this"
+            class="post-card__tag"
+            catchtap="onTagTap"
+            data-tag="{{item}}"
+            >{{item}}</text
+          >
+        </view>
+      </view>
+      <view class="post-card__more">阅读 →</view>
+    </view>
+  </view>
+</view>

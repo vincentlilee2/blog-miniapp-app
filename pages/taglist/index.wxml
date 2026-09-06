@@ -1,0 +1,21 @@
+<view class="page-taglist">
+  <view wx:if="{{loading}}" class="state-wrap">
+    <t-loading theme="spinner" size="60rpx" text="加载中..." />
+  </view>
+
+  <view wx:elif="{{initError}}" class="state-wrap">
+    <view class="state-tip">{{error}}</view>
+    <t-button theme="primary" size="medium" bindtap="onRetry">重试</t-button>
+  </view>
+
+  <block wx:else>
+    <post-card wx:for="{{posts}}" wx:key="slug" post="{{item}}" />
+    <view wx:if="{{posts.length}}" class="list-end">
+      <t-loading wx:if="{{loadingMore}}" theme="spinner" size="40rpx" text="加载中..." />
+      <text wx:elif="{{finished}}" class="list-end__text">— 已经到底啦 —</text>
+    </view>
+    <view wx:if="{{!posts.length}}" class="state-wrap">
+      <view class="state-tip">该标签下暂无文章</view>
+    </view>
+  </block>
+</view>

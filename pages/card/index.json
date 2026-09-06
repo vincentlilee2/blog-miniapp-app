@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "电子名片",
+  "navigationBarBackgroundColor": "#0e2233",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#0e2233",
+  "usingComponents": {
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-icon": "tdesign-miniprogram/icon/icon"
+  }
+}

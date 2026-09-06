@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "记忆花园",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "post-card": "/components/post-card/index",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}

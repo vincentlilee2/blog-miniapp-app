@@ -1,0 +1,55 @@
+<view class="page-article">
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="state-wrap">
+    <t-loading theme="spinner" size="60rpx" text="加载中..." />
+  </view>
+
+  <!-- 错误 -->
+  <view wx:elif="{{error}}" class="state-wrap">
+    <view class="state-tip">{{error}}</view>
+    <t-button theme="primary" size="medium" bindtap="onRetry">重试</t-button>
+  </view>
+
+  <!-- 正文 -->
+  <block wx:elif="{{post}}">
+    <image
+      wx:if="{{post.cover}}"
+      class="article-cover"
+      src="{{post.cover}}"
+      mode="aspectFill"
+      style="{{coverPositionStyle}}"
+      data-src="{{post.cover}}"
+      bindtap="onCoverTap"
+    />
+    <view class="article-main">
+      <view class="article-title">{{post.title}}</view>
+      <view class="article-meta">
+        <text wx:if="{{dateText}}" class="article-date">{{dateText}}</text>
+        <t-tag
+          wx:for="{{post.tags}}"
+          wx:key="*this"
+          class="article-tag"
+          size="small"
+          variant="light"
+          theme="primary"
+          data-tag="{{item}}"
+          bindtap="onTagTap"
+          >{{item}}</t-tag
+        >
+      </view>
+
+      <view class="article-divider"></view>
+
+      <!-- 正文 HTML（mp-html 渲染，图片点击预览） -->
+      <mp-html
+        class="article-content"
+        content="{{post.contentHtml}}"
+        tag-style="{{tagStyle}}"
+        selectable
+        bind:imgtap="onImgTap"
+      />
+    </view>
+
+    <view class="article-end">— END —</view>
+  </block>
+</view>

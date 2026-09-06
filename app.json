@@ -1,0 +1,52 @@
+{
+  "pages": ["pages/card/index", "pages/home/index", "pages/my/index"],
+  "usingComponents": {},
+  "subpackages": [
+    {
+      "root": "pages/article",
+      "name": "article",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/taglist",
+      "name": "taglist",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/guestbook",
+      "name": "guestbook",
+      "pages": ["index"]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "记忆花园",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f3f3f3"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#0052d9",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/card/index",
+        "text": "电子名片"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "resolveAlias": {
+    "~/*": "/*"
+  }
+}

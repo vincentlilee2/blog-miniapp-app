@@ -1,0 +1,26 @@
+.page-taglist {
+  padding-top: 8rpx;
+  min-height: 100vh;
+}
+.state-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 160rpx 60rpx;
+  gap: 24rpx;
+}
+.state-tip {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+.list-end {
+  display: flex;
+  justify-content: center;
+  padding: 30rpx 0 60rpx;
+}
+.list-end__text {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,124 @@
+.gb-page {
+  min-height: 100vh;
+  background: #f5f6f8;
+  padding: 24rpx 28rpx 60rpx;
+  box-sizing: border-box;
+}
+
+/* 说明卡 */
+.gb-tip {
+  background: linear-gradient(135deg, #0e2233, #123a5c);
+  border-radius: 16rpx;
+  padding: 28rpx 30rpx;
+  color: #fff;
+  margin-bottom: 24rpx;
+}
+.gb-tip-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+.gb-tip-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  word-break: break-all;
+}
+.gb-tip-warn {
+  font-size: 23rpx;
+  color: #f6e7b2;
+  margin-top: 14rpx;
+  line-height: 1.6;
+}
+
+/* 表单 */
+.gb-form {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 28rpx;
+}
+.gb-field {
+  margin-bottom: 26rpx;
+  position: relative;
+}
+.gb-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 12rpx;
+}
+.gb-opt {
+  font-size: 22rpx;
+  color: rgba(0, 0, 0, 0.35);
+  font-weight: 400;
+}
+.gb-req {
+  color: #e34d59;
+}
+.gb-input {
+  border: 1rpx solid #e5e6e8;
+  border-radius: 10rpx;
+  padding: 18rpx 22rpx;
+  font-size: 28rpx;
+  background: #fafbfc;
+}
+.gb-textarea {
+  border: 1rpx solid #e5e6e8;
+  border-radius: 10rpx;
+  padding: 18rpx 22rpx;
+  font-size: 28rpx;
+  width: 100%;
+  height: 240rpx;
+  box-sizing: border-box;
+  background: #fafbfc;
+}
+.gb-count {
+  position: absolute;
+  right: 4rpx;
+  bottom: -34rpx;
+  font-size: 20rpx;
+  color: rgba(0, 0, 0, 0.3);
+}
+.gb-err {
+  font-size: 24rpx;
+  color: #e34d59;
+  margin: 8rpx 0 16rpx;
+}
+.gb-foot {
+  text-align: center;
+  font-size: 20rpx;
+  color: rgba(0, 0, 0, 0.3);
+  margin-top: 20rpx;
+}
+
+/* 成功态 */
+.gb-done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 140rpx 60rpx 0;
+}
+.gb-done-icon {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  background: #1e7e34;
+  color: #fff;
+  font-size: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+.gb-done-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+}
+.gb-done-desc {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.55);
+  text-align: center;
+  line-height: 1.7;
+  margin-bottom: 40rpx;
+}

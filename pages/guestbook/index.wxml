@@ -1,0 +1,72 @@
+<view class="gb-page">
+  <!-- 提交成功态 -->
+  <view wx:if="{{done}}" class="gb-done">
+    <view class="gb-done-icon">✓</view>
+    <view class="gb-done-title">留言已送达</view>
+    <view class="gb-done-desc">感谢你的留言！Vincent 会通过你留下的联系方式回复你。</view>
+    <t-button theme="primary" size="medium" bindtap="onReset">再写一条</t-button>
+  </view>
+
+  <!-- 表单 -->
+  <block wx:else>
+    <!-- 说明卡 -->
+    <view class="gb-tip">
+      <view class="gb-tip-title">💬 给 Vincent 留言</view>
+      <view class="gb-tip-text">
+        这是直达 Vincent 的私信通道，留言不会公开展示。
+        回复邮箱：{{email}}（也可以直接发邮件给我）
+      </view>
+      <view class="gb-tip-warn">✏️ 建议留下你的微信或邮箱，方便 Vincent 回复你</view>
+    </view>
+
+    <view class="gb-form">
+      <view class="gb-field">
+        <view class="gb-label">称呼 <text class="gb-opt">（可选）</text></view>
+        <input
+          class="gb-input"
+          placeholder="怎么称呼你？"
+          maxlength="30"
+          value="{{name}}"
+          data-field="name"
+          bindinput="onInput"
+        />
+      </view>
+
+      <view class="gb-field">
+        <view class="gb-label">微信 / 邮箱 <text class="gb-opt">（可选）</text></view>
+        <input
+          class="gb-input"
+          placeholder="留下联系方式，Vincent 才能回复你"
+          maxlength="120"
+          value="{{contact}}"
+          data-field="contact"
+          bindinput="onInput"
+        />
+      </view>
+
+      <view class="gb-field">
+        <view class="gb-label">留言内容 <text class="gb-req">*</text></view>
+        <textarea
+          class="gb-textarea"
+          placeholder="想对 Vincent 说什么？建议、问题、合作…都可以"
+          maxlength="500"
+          value="{{content}}"
+          data-field="content"
+          bindinput="onInput"
+        />
+        <view class="gb-count">{{content.length}}/500</view>
+      </view>
+
+      <view wx:if="{{errMsg}}" class="gb-err">{{errMsg}}</view>
+
+      <t-button
+        theme="primary"
+        size="large"
+        loading="{{submitting}}"
+        disabled="{{submitting}}"
+        bindtap="onSubmit"
+      >发送留言</t-button>
+      <view class="gb-foot">留言将发送到 Vincent 的邮箱，不在任何页面公开展示</view>
+    </view>
+  </block>
+</view>

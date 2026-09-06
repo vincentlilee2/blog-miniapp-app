@@ -1,0 +1,81 @@
+<view class="page-my">
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="state-wrap">
+    <t-loading theme="spinner" size="60rpx" text="加载中..." />
+  </view>
+
+  <!-- 错误 -->
+  <view wx:elif="{{error}}" class="state-wrap">
+    <view class="state-tip">{{error}}</view>
+    <t-button theme="primary" size="medium" bindtap="onRetry">重试</t-button>
+  </view>
+
+  <block wx:elif="{{author}}">
+    <!-- 作者卡 -->
+    <view class="author-card">
+      <image wx:if="{{author.avatar}}" class="author-avatar" src="{{author.avatar}}" mode="aspectFill" />
+      <view class="author-info">
+        <view class="author-name">{{author.name}}</view>
+        <view wx:if="{{author.role}}" class="author-role">{{author.role}}</view>
+        <view wx:if="{{author.bio}}" class="author-bio">{{author.bio}}</view>
+        <view class="author-socials">
+          <view
+            wx:for="{{socials}}"
+            wx:key="key"
+            class="social-chip {{item.key === 'guestbook' ? 'social-chip--cta' : ''}}"
+            data-url="{{item.url}}"
+            data-label="{{item.label}}"
+            data-key="{{item.key}}"
+            bindtap="onSocialTap"
+          >
+            <t-icon name="{{item.icon}}" size="34rpx" />
+            <text>{{item.label}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 微信联系 -->
+    <view wx:if="{{wechatQr || author.card.wechatId}}" class="section">
+      <view class="section-title">微信联系</view>
+      <view class="wechat-box">
+        <image
+          wx:if="{{wechatQr}}"
+          class="wechat-qr"
+          src="{{wechatQr}}"
+          mode="aspectFit"
+          show-menu-by-longpress
+          data-src="{{wechatQr}}"
+          bindtap="onQrPreview"
+        />
+        <view wx:if="{{author.card.wechatId}}" class="wechat-id" bindtap="onCopyWechat">
+          <text>微信号：{{author.card.wechatId}}</text>
+          <text class="wechat-copy">点击复制</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 项目 -->
+    <view wx:if="{{projects.length}}" class="section">
+      <view class="section-title">开源与项目</view>
+      <view class="project-list">
+        <view
+          wx:for="{{projects}}"
+          wx:key="name"
+          class="project-item"
+          data-url="{{item.url}}"
+          data-name="{{item.name}}"
+          bindtap="onProjectTap"
+        >
+          <view class="project-name">
+            <text>{{item.name}}</text>
+            <t-icon name="link" size="28rpx" />
+          </view>
+          <view wx:if="{{item.desc}}" class="project-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="page-foot">记忆花园 MemoryGarden · Blog 小程序</view>
+  </block>
+</view>

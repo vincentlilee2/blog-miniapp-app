@@ -1,0 +1,71 @@
+.page-article {
+  min-height: 100vh;
+}
+
+.state-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 160rpx 60rpx;
+  gap: 24rpx;
+}
+.state-tip {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.article-cover {
+  width: 100%;
+  height: 400rpx;
+  display: block;
+  background: #e8e8e8;
+}
+
+.article-main {
+  background: #fff;
+  padding: 40rpx 36rpx;
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.article-title {
+  font-size: 42rpx;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.92);
+  line-height: 1.4;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+.article-date {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.35);
+  margin-right: 8rpx;
+}
+.article-tag {
+  margin-right: 0;
+}
+
+.article-divider {
+  height: 1rpx;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 28rpx 0 24rpx;
+}
+
+.article-content {
+  /* mp-html 内部样式由 tag-style 控制 */
+}
+
+.article-end {
+  text-align: center;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.3);
+  padding: 48rpx 0 80rpx;
+  letter-spacing: 4rpx;
+}

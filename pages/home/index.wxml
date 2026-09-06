@@ -1,0 +1,28 @@
+<view class="page-home">
+  <!-- 首屏 loading -->
+  <view wx:if="{{loading}}" class="state-wrap">
+    <t-loading theme="spinner" size="60rpx" text="加载中..." />
+  </view>
+
+  <!-- 首屏失败 -->
+  <view wx:elif="{{initError}}" class="state-wrap">
+    <view class="state-tip">{{error}}</view>
+    <t-button theme="primary" size="medium" bindtap="onRetry">重试</t-button>
+  </view>
+
+  <!-- 文章列表 -->
+  <block wx:else>
+    <post-card wx:for="{{posts}}" wx:key="slug" post="{{item}}" />
+
+    <!-- 触底状态 -->
+    <view wx:if="{{posts.length}}" class="list-end">
+      <t-loading wx:if="{{loadingMore}}" theme="spinner" size="40rpx" text="加载中..." />
+      <text wx:elif="{{finished}}" class="list-end__text">— 已经到底啦 —</text>
+    </view>
+
+    <!-- 空态 -->
+    <view wx:if="{{!posts.length}}" class="state-wrap">
+      <view class="state-tip">还没有文章</view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "文章",
+  "usingComponents": {
+    "mp-html": "/components/mp-html/index",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}
