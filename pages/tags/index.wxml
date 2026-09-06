@@ -1,0 +1,27 @@
+<view class="page-tags">
+  <view wx:if="{{loading}}" class="state-wrap">
+    <t-loading theme="spinner" size="60rpx" text="加载中..." />
+  </view>
+
+  <view wx:elif="{{error}}" class="state-wrap">
+    <view class="state-tip">{{error}}</view>
+    <t-button theme="primary" size="medium" bindtap="onRetry">重试</t-button>
+  </view>
+
+  <block wx:else>
+    <view class="tags-desc">共 {{tags.length}} 个标签，点击查看同标签文章</view>
+    <view class="tags-cloud">
+      <t-tag
+        wx:for="{{tags}}"
+        wx:key="name"
+        class="tags-item"
+        size="large"
+        variant="light"
+        theme="primary"
+        data-name="{{item.name}}"
+        bindtap="onTagTap"
+      >{{item.name}} · {{item.count}}</t-tag>
+      <view wx:if="{{!tags.length}}" class="state-tip" style="padding: 120rpx 0">暂无标签</view>
+    </view>
+  </block>
+</view>

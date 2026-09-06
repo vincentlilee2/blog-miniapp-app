@@ -1,0 +1,47 @@
+<view class="page-archive">
+  <view wx:if="{{loading}}" class="state-wrap">
+    <t-loading theme="spinner" size="60rpx" text="加载中..." />
+  </view>
+
+  <view wx:elif="{{error}}" class="state-wrap">
+    <view class="state-tip">{{error}}</view>
+    <t-button theme="primary" size="medium" bindtap="onRetry">重试</t-button>
+  </view>
+
+  <block wx:else>
+    <!-- 月份手风琴 -->
+    <view wx:for="{{months}}" wx:key="month" class="month-card">
+      <view class="month-head" data-month="{{item.month}}" bindtap="onToggleMonth">
+        <text class="month-label">{{item.monthLabel}}</text>
+        <text class="month-count">{{item.posts.length}} 篇</text>
+        <t-icon
+          name="{{openMonth === item.month ? 'chevron-up' : 'chevron-down'}}"
+          size="32rpx"
+          color="rgba(0,0,0,.4)"
+        />
+      </view>
+
+      <view wx:if="{{openMonth === item.month}}" class="month-body">
+        <view
+          wx:for="{{item.posts}}"
+          wx:for-item="post"
+          wx:key="slug"
+          class="post-row"
+          data-slug="{{post.slug}}"
+          bindtap="onPostTap"
+          hover-class="post-row--hover"
+        >
+          <view class="post-main">
+            <text class="post-date">{{post.dateShort}}</text>
+            <text class="post-title">{{post.title}}</text>
+          </view>
+          <t-icon name="chevron-right" size="28rpx" color="rgba(0,0,0,.25)" />
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{!months.length}}" class="state-wrap">
+      <view class="state-tip">还没有文章</view>
+    </view>
+  </block>
+</view>

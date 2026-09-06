@@ -1,0 +1,31 @@
+.page-tags {
+  min-height: 100vh;
+  background: #f5f6f8;
+}
+.state-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 160rpx 60rpx;
+  gap: 24rpx;
+}
+.state-tip {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+.tags-desc {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.4);
+  padding: 24rpx 32rpx 8rpx;
+}
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  padding: 20rpx 32rpx;
+}
+.tags-item {
+  margin-right: 0;
+}

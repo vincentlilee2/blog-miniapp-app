@@ -1,81 +1,91 @@
 <view class="page-my">
-  <!-- 加载中 -->
   <view wx:if="{{loading}}" class="state-wrap">
     <t-loading theme="spinner" size="60rpx" text="加载中..." />
   </view>
 
-  <!-- 错误 -->
   <view wx:elif="{{error}}" class="state-wrap">
     <view class="state-tip">{{error}}</view>
     <t-button theme="primary" size="medium" bindtap="onRetry">重试</t-button>
   </view>
 
-  <block wx:elif="{{author}}">
-    <!-- 作者卡 -->
-    <view class="author-card">
-      <image wx:if="{{author.avatar}}" class="author-avatar" src="{{author.avatar}}" mode="aspectFill" />
-      <view class="author-info">
-        <view class="author-name">{{author.name}}</view>
-        <view wx:if="{{author.role}}" class="author-role">{{author.role}}</view>
-        <view wx:if="{{author.bio}}" class="author-bio">{{author.bio}}</view>
-        <view class="author-socials">
-          <view
-            wx:for="{{socials}}"
-            wx:key="key"
-            class="social-chip {{item.key === 'guestbook' ? 'social-chip--cta' : ''}}"
-            data-url="{{item.url}}"
-            data-label="{{item.label}}"
-            data-key="{{item.key}}"
-            bindtap="onSocialTap"
-          >
-            <t-icon name="{{item.icon}}" size="34rpx" />
-            <text>{{item.label}}</text>
-          </view>
+  <block wx:else>
+    <!-- ① 精简身份条：点按看完整电子名片 -->
+    <view class="id-bar" bindtap="goCard" hover-class="id-bar--hover">
+      <image wx:if="{{author.avatar}}" class="id-avatar" src="{{author.avatar}}" mode="aspectFill" />
+      <view wx:else class="id-avatar id-avatar--empty">
+        <t-icon name="user" size="40rpx" color="#ffffffcc" />
+      </view>
+      <view class="id-text">
+        <view class="id-name">{{author.name || '记忆花园'}}</view>
+        <view class="id-role">{{author.role || '完整名片见「电子名片」页'}}</view>
+      </view>
+      <t-icon name="chevron-right" size="30rpx" color="rgba(255,255,255,.5)" />
+    </view>
+
+    <!-- ② 内容浏览 -->
+    <view class="card-sec">
+      <view class="nav-row" bindtap="goArchive" hover-class="nav-row--hover">
+        <view class="nav-icon">📅</view>
+        <view class="nav-main">
+          <view class="nav-title">往期文章</view>
+          <view class="nav-sub">按月份浏览历史文章</view>
         </view>
+        <t-icon name="chevron-right" size="30rpx" color="rgba(0,0,0,.3)" />
+      </view>
+      <view class="nav-row" bindtap="goTags" hover-class="nav-row--hover">
+        <view class="nav-icon">🏷</view>
+        <view class="nav-main">
+          <view class="nav-title">标签云</view>
+          <view class="nav-sub">按主题找文章</view>
+        </view>
+        <t-icon name="chevron-right" size="30rpx" color="rgba(0,0,0,.3)" />
+      </view>
+      <view class="nav-row" bindtap="goAllPosts" hover-class="nav-row--hover">
+        <view class="nav-icon">📰</view>
+        <view class="nav-main">
+          <view class="nav-title">全部文章</view>
+          <view class="nav-sub">去首页文章流</view>
+        </view>
+        <t-icon name="chevron-right" size="30rpx" color="rgba(0,0,0,.3)" />
       </view>
     </view>
 
-    <!-- 微信联系 -->
-    <view wx:if="{{wechatQr || author.card.wechatId}}" class="section">
-      <view class="section-title">微信联系</view>
-      <view class="wechat-box">
-        <image
-          wx:if="{{wechatQr}}"
-          class="wechat-qr"
-          src="{{wechatQr}}"
-          mode="aspectFit"
-          show-menu-by-longpress
-          data-src="{{wechatQr}}"
-          bindtap="onQrPreview"
-        />
-        <view wx:if="{{author.card.wechatId}}" class="wechat-id" bindtap="onCopyWechat">
-          <text>微信号：{{author.card.wechatId}}</text>
-          <text class="wechat-copy">点击复制</text>
-        </view>
-      </view>
+    <!-- ③ 给我留言（主 CTA） -->
+    <view class="gb-cta" bindtap="goGuestbook" hover-class="gb-cta--hover">
+      <text class="gb-cta-icon">💬</text>
+      <text class="gb-cta-text">给我留言</text>
     </view>
 
-    <!-- 项目 -->
-    <view wx:if="{{projects.length}}" class="section">
-      <view class="section-title">开源与项目</view>
-      <view class="project-list">
+    <!-- ④ 关于 -->
+    <view class="card-sec">
+      <view class="sec-title">关于</view>
+      <view class="about-row">
+        <view class="about-text">
+          <view class="about-name">记忆花园 MemoryGarden</view>
+          <view class="about-desc">个人博客与开源项目：本地相册 / Blog / 电子名片小程序</view>
+        </view>
+      </view>
+      <view class="about-links">
         <view
-          wx:for="{{projects}}"
-          wx:key="name"
-          class="project-item"
+          wx:for="{{githubRepos}}"
+          wx:key="url"
+          class="link-row"
           data-url="{{item.url}}"
-          data-name="{{item.name}}"
-          bindtap="onProjectTap"
+          data-label="{{item.label}}"
+          bindtap="onCopyLink"
+          hover-class="nav-row--hover"
         >
-          <view class="project-name">
-            <text>{{item.name}}</text>
-            <t-icon name="link" size="28rpx" />
-          </view>
-          <view wx:if="{{item.desc}}" class="project-desc">{{item.desc}}</view>
+          <text class="link-label">{{item.label}}</text>
+          <text class="link-copy">复制链接</text>
         </view>
+      </view>
+      <view class="about-meta">
+        <text>小程序 v{{version}}</text>
+        <text class="about-meta-dot">·</text>
+        <text>{{changelog}}</text>
       </view>
     </view>
 
-    <view class="page-foot">记忆花园 MemoryGarden · Blog 小程序</view>
+    <view class="page-foot">记忆花园 MemoryGarden · 体验版内测中</view>
   </block>
 </view>

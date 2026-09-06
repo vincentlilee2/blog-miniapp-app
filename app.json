@@ -16,6 +16,16 @@
       "root": "pages/guestbook",
       "name": "guestbook",
       "pages": ["index"]
+    },
+    {
+      "root": "pages/archive",
+      "name": "archive",
+      "pages": ["index"]
+    },
+    {
+      "root": "pages/tags",
+      "name": "tags",
+      "pages": ["index"]
     }
   ],
   "window": {

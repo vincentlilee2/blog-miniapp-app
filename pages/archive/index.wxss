@@ -1,0 +1,79 @@
+.page-archive {
+  min-height: 100vh;
+  background: #f5f6f8;
+  padding: 20rpx 24rpx 60rpx;
+  box-sizing: border-box;
+}
+
+.state-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 160rpx 60rpx;
+  gap: 24rpx;
+}
+.state-tip {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.month-card {
+  background: #fff;
+  border-radius: 14rpx;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
+}
+.month-head {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 28rpx;
+  gap: 16rpx;
+}
+.month-label {
+  font-size: 30rpx;
+  font-weight: 600;
+  flex: 1;
+}
+.month-count {
+  font-size: 22rpx;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.month-body {
+  border-top: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+.post-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 28rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.04);
+}
+.post-row:last-child {
+  border-bottom: none;
+}
+.post-row--hover {
+  background: #f7f8fa;
+}
+.post-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 16rpx;
+}
+.post-date {
+  font-size: 22rpx;
+  color: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+.post-title {
+  font-size: 27rpx;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

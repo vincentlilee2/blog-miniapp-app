@@ -18,6 +18,11 @@ export function getTags() {
   return request('/api/tags');
 }
 
+/** 按月归档：[{month:'2026-09', posts:[{slug,title,date}]}] */
+export function getArchive() {
+  return request('/api/archive');
+}
+
 /** 站点/作者信息 */
 export function getSite() {
   return request('/api/site');

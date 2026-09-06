@@ -1,7 +1,8 @@
 {
-  "navigationBarTitleText": "我的",
+  "navigationBarTitleText": "往期文章",
   "usingComponents": {
     "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-tag": "tdesign-miniprogram/tag/tag",
     "t-button": "tdesign-miniprogram/button/button",
     "t-icon": "tdesign-miniprogram/icon/icon"
   }

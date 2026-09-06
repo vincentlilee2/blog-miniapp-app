@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "标签云",
+  "usingComponents": {
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}
